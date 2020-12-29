@@ -38,14 +38,19 @@ var postTask = function (content, successCB, errorCB) {
 
 //postTask('Finish front end of app');
 
-// indexTasks function - request for retrieving all tasks associated with an API key
+// deleteTask - deletes task using task id to select task from db
 var deleteTask = function (taskId, successCB, errorCB) {
   var request = {
-    type: 'GET',
-    url: 'api/tasks?api_key=1',
-    success: successCB,
-    error: errorCB
+    type: 'DELETE',
+    url: 'api/tasks/' + taskId + '?api_key=1',
+    success: function (response) {
+      console.log(response);
+    },
+    error: function (request, errorMsg) {
+      console.log(request, errorMsg);
+    }
   }
-  
   $.ajax(request);
 };
+
+//deleteTask(2);

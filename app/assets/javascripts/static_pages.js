@@ -22,20 +22,32 @@ $(document).on("turbolinks:load", function () {
       
       // DOM Elements to assign event listeners to upon creation
       var addButton = document.querySelector("#btn-add");
-      var completeButtons = Array.from(document.querySelectorAll("input.checkbox"));
-      var deleteButtons = Array.from(document.querySelectorAll(".btn-delete"));
-            
+      
       // Event Handler for Add Button - add new item to list if input field is populated
       addButton.addEventListener("click", function (e) {
         var taskInput = document.querySelector(".task-input").value;
         e.preventDefault();
         postTask(taskInput);
-
+        indexTasks();
         // Clear input value once new item has been added to the list
         document.querySelector(".task-input").value = "";
       });
 
       $("#tasks").html(htmlString);    
+
+      var completeButtons = Array.from(document.querySelectorAll("input.checkbox"));
+      console.log(completeButtons);
+      
+      // Event listener for delete buttons
+      var deleteButtons = Array.from(document.querySelectorAll(".btn-danger"));
+            
+      deleteButtons.forEach((button) => {
+        button.addEventListener("click", function (e) {
+          var taskId = e.target.parentElement.getAttribute("data-id");
+          deleteTask(taskId);
+          indexTasks();
+        });
+      });
     });
   }
 });
