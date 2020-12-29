@@ -37,3 +37,15 @@ var postTask = function (content, successCB, errorCB) {
 };
 
 //postTask('Finish front end of app');
+
+// indexTasks function - request for retrieving all tasks associated with an API key
+var deleteTask = function (taskId, successCB, errorCB) {
+  var request = {
+    type: 'GET',
+    url: 'api/tasks?api_key=1',
+    success: successCB,
+    error: errorCB
+  }
+  
+  $.ajax(request);
+};
