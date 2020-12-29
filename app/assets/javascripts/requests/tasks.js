@@ -54,3 +54,37 @@ var deleteTask = function (taskId, successCB, errorCB) {
 };
 
 //deleteTask(2);
+
+// markComplete - marks a task as complete by updating completion status to true
+var markComplete = function (taskId, successCB, errorCB) {
+  var request = {
+    type: 'PUT',
+    url: 'api/tasks/' + taskId + '/mark_complete?api_key=1',
+    success: function (response) {
+      console.log(response);
+    },
+    error: function (request, errorMsg) {
+      console.log(request, errorMsg);
+    }
+  }
+  $.ajax(request);
+};
+
+//markComplete(16);
+
+// markComplete - marks a task as complete by updating completion status to true
+var markActive = function (taskId, successCB, errorCB) {
+  var request = {
+    type: 'PUT',
+    url: 'api/tasks/' + taskId + '/mark_active?api_key=1',
+    success: function (response) {
+      console.log(response);
+    },
+    error: function (request, errorMsg) {
+      console.log(request, errorMsg);
+    }
+  }
+  $.ajax(request);
+};
+
+//markActive(16);

@@ -60,6 +60,15 @@ module Api
       render 'show', status: :ok
     end
 
+    def mark_active
+      user = User.find_by(id: params[:api_key])
+      @task = user.tasks.find_by(id: params[:id])
+
+      return render 'not_found', status: :not_found if not @task
+      return render 'bad_request', status: :bad_request if not @task.update(completed: false)
+      render 'show', status: :ok
+    end
+
     private
 
     def task_params

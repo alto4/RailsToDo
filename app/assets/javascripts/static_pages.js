@@ -36,8 +36,18 @@ $(document).on("turbolinks:load", function () {
       $("#tasks").html(htmlString);    
 
       var completeButtons = Array.from(document.querySelectorAll("input.checkbox"));
-      console.log(completeButtons);
       
+      completeButtons.forEach((button) => {
+        button.addEventListener("click", function (e) {
+          console.log(e.target.checked);
+          var taskId = e.target.parentElement.parentElement.getAttribute("data-id");
+          console.log("Task id for processing: " + taskId);
+          
+          //markComplete(taskId);
+          markActive(taskId);
+          
+        });
+      });
       // Event listener for delete buttons
       var deleteButtons = Array.from(document.querySelectorAll(".btn-danger"));
             
@@ -45,7 +55,6 @@ $(document).on("turbolinks:load", function () {
         button.addEventListener("click", function (e) {
           var taskId = e.target.parentElement.getAttribute("data-id");
           deleteTask(taskId);
-          indexTasks();
         });
       });
     });
