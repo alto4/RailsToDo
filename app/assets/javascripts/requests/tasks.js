@@ -34,6 +34,7 @@ var postTask = function (content, successCB, errorCB) {
   }
 
   $.ajax(request);
+  location.reload();
 };
 
 //postTask('Finish front end of app');
@@ -51,7 +52,10 @@ var deleteTask = function (taskId, successCB, errorCB) {
     }
   }
   $.ajax(request);
+  location.reload();
 };
+
+
 
 //deleteTask(2);
 

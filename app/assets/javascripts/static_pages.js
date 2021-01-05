@@ -13,10 +13,10 @@ $(document).on("turbolinks:load", function () {
 
         return "\
         <div class='col-12 w-100 mb-3 p-2 border rounded task d-flex justify-content-between' data-id='" + task.id + "'>" +
-          '<div>\
-              <input type="checkbox" class="checkbox mr-4"' + status + ">" + task.content + 
-          '</div>\
-          <button class="px-3 py-0 btn btn-delete btn-danger text-right">X</i></button>' + "\
+          '<div>' + 
+              '<input type="checkbox" class="checkbox mr-4"' + status + ">" + task.content + 
+          '</div>' +
+          '<button class="px-3 py-0 btn btn-delete btn-danger text-right">X</i></button>' + "\
         </div>";
       });
       
@@ -28,7 +28,7 @@ $(document).on("turbolinks:load", function () {
         var taskInput = document.querySelector(".task-input").value;
         e.preventDefault();
         postTask(taskInput);
-        indexTasks();
+
         // Clear input value once new item has been added to the list
         document.querySelector(".task-input").value = "";
       });
@@ -43,9 +43,13 @@ $(document).on("turbolinks:load", function () {
           var taskId = e.target.parentElement.parentElement.getAttribute("data-id");
           console.log("Task id for processing: " + taskId);
           
-          //markComplete(taskId);
-          markActive(taskId);
-          
+          if (!e.target.checked) {
+            console.log("INCOMPLETE")
+            markActive(taskId);
+          } else {
+            console.log("COMPLETE!");
+            markComplete(taskId);
+          }
         });
       });
       // Event listener for delete buttons
