@@ -17,8 +17,6 @@ var indexTasks = function (successCB, errorCB) {
   $.ajax(request);
 };
 
-//indexTasks();
-
 // postTask - request for creating a new task
 var postTask = function (content, successCB, errorCB) {
   var request = {
@@ -37,8 +35,6 @@ var postTask = function (content, successCB, errorCB) {
   location.reload();
 };
 
-//postTask('Finish front end of app');
-
 // deleteTask - deletes task using task id to select task from db
 var deleteTask = function (taskId, successCB, errorCB) {
   var request = {
@@ -55,10 +51,6 @@ var deleteTask = function (taskId, successCB, errorCB) {
   location.reload();
 };
 
-
-
-//deleteTask(2);
-
 // markComplete - marks a task as complete by updating completion status to true
 var markComplete = function (taskId, successCB, errorCB) {
   var request = {
@@ -74,8 +66,6 @@ var markComplete = function (taskId, successCB, errorCB) {
   $.ajax(request);
 };
 
-//markComplete(16);
-
 // markComplete - marks a task as complete by updating completion status to true
 var markActive = function (taskId, successCB, errorCB) {
   var request = {
@@ -90,5 +80,3 @@ var markActive = function (taskId, successCB, errorCB) {
   }
   $.ajax(request);
 };
-
-//markActive(16);
